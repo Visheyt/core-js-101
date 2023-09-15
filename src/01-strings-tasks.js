@@ -18,7 +18,7 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(value1, value2 ) {
+function concatenateStrings(value1, value2) {
   return `${value1}${value2}`;
 }
 
@@ -35,7 +35,7 @@ function concatenateStrings(value1, value2 ) {
  *   ''      => 0
  */
 function getStringLength(value) {
-  return value.length
+  return value.length;
 }
 
 /**
@@ -65,8 +65,8 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate( value ) {
-  return value.slice(7)
+function extractNameFromTemplate(value) {
+  return value.slice(7);
 }
 
 
@@ -80,8 +80,8 @@ function extractNameFromTemplate( value ) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(value ) {
-  return value.slice(0,1);
+function getFirstChar(value) {
+  return value.slice(0, 1);
 }
 
 /**
@@ -110,12 +110,12 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(value, count ) {
-  let newArr = []
-  for (let i=0;i<count;i++){
-    newArr.push(value)
+function repeatString(value, count) {
+  const newArr = [];
+  for (let i = 0; i < count; i++) {
+    newArr.push(value);
   }
-  return newArr.join("");
+  return newArr.join('');
 }
 
 /**
@@ -130,8 +130,8 @@ function repeatString(value, count ) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(str, value ) {
-  return str.replace(value,"")
+function removeFirstOccurrences(str, value) {
+  return str.replace(value, '');
 }
 
 /**
@@ -146,8 +146,8 @@ function removeFirstOccurrences(str, value ) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  let newStr = str.replace("<","");
-  return newStr.replace(">","")
+  const newStr = str.replace('<', '');
+  return newStr.replace('>', '');
 }
 
 
@@ -245,10 +245,10 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(value ) {
-  if (typeof value === "string"){
-    return true
-  }return false
+function isString(value) {
+  if (typeof value === 'string') {
+    return true;
+  } return false;
 }
 
 
