@@ -112,8 +112,10 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  */
 function repeatString(value, count) {
   const newArr = [];
-  for (let i = 0; i < count; i++) {
+  let counter = count; 
+  while (counter > 0) {
     newArr.push(value);
+    counter -= 1;
   }
   return newArr.join('');
 }
@@ -131,7 +133,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, '');
+  let newStr = str
+  return newStr.replace(value, '');
 }
 
 /**
