@@ -186,15 +186,26 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  let number = num;
+  if (pow === 0) {
+    return num;
+  }
+  const x = num % (10 ** pow);
+  if (x < 50) {
+    number = (num - x);
+    return number;
+  }
+  const y = (10 ** pow) - x;
+  number = num + y;
+  return number;
 }
 
 /**
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
- * @param {number} n
+ * @param {number}
  * @return {bool}
  *
  * @example:
@@ -231,8 +242,11 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (Number.isNaN(Number(value))) {
+    return def;
+  }
+  return Number(value);
 }
 
 module.exports = {
