@@ -203,8 +203,26 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  let left; let right; let first; let last;
+  if (a > b) {
+    first = b;
+    last = a;
+  } else {
+    first = a;
+    last = b;
+  }
+  if (isStartIncluded === true) {
+    left = '[';
+  } else {
+    left = '(';
+  }
+  if (isEndIncluded === true) {
+    right = ']';
+  } else {
+    right = ')';
+  }
+  return `${left}${first}, ${last}${right}`;
 }
 
 
@@ -237,8 +255,10 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const newArr = String(num).split('').reverse();
+  const strNum = newArr.join('');
+  return Number(strNum);
 }
 
 
@@ -280,8 +300,15 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  let newArr = String(num).split('');
+  const x = newArr.reduce((prev, element) => Number(prev) + Number(element));
+  if (x > 9) {
+    newArr = String(x).split('');
+    const y = newArr.reduce((prev, element) => Number(prev) + Number(element));
+    return y;
+  }
+  return x;
 }
 
 
@@ -306,8 +333,17 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  if (str.length === 0) {
+    return true;
+  }
+  const str1 = str.slice(0, str.length / 2 - 1);
+  const str2 = str.slice(str.length / 2 - 1, str.length - 1);
+  let flag = true;
+  for (let i = 0; i < str1.length; i += 1) {
+    if (str1[i] !== str2[i]) { flag = false; }
+  }
+  return flag;
 }
 
 
