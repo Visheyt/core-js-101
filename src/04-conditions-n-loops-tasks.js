@@ -176,8 +176,14 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  for (let i = 0; i < str.length; i += 1) {
+    const count = [...str].filter((element) => element === str[i]).length;
+    if (count === 1) {
+      return str[i];
+    }
+  }
+  return null;
 }
 
 
@@ -238,8 +244,14 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  const newArr = str.split(' ').reverse();
+  const newArrr = [];
+  for (let i = 0; i < newArr.length; i += 1) {
+    newArrr.push(newArr[i].split('').reverse().join(''));
+  }
+
+  return newArrr.join(' ');
 }
 
 
@@ -367,8 +379,8 @@ function isBracketsBalanced(str) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
