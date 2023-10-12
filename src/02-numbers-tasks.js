@@ -53,7 +53,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  const average = (value1 + value2) / 2;
+  const average = value1 / 2 + value2 / 2;
   return average;
 }
 
@@ -113,8 +113,10 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const angle = (x1 * x2 + y1 * y2) / (Math.hypot(x1, y1) * Math.hypot(x2, y2));
+  const angleInRad = Math.acos(angle);
+  return angleInRad;
 }
 
 /**
@@ -187,18 +189,8 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  let number = num;
-  if (pow === 0) {
-    return num;
-  }
-  const x = num % (10 ** pow);
-  if (x < 50) {
-    number = (num - x);
-    return number;
-  }
-  const y = (10 ** pow) - x;
-  number = num + y;
-  return number;
+  const newNum = Math.round(num / 10 ** pow) * 10 ** pow;
+  return newNum;
 }
 
 /**
