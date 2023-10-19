@@ -50,8 +50,10 @@ function getFizzBuzz(num) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  const number = n;
+  if (n === 1) { return number; }
+  return number * getFactorial(n - 1);
 }
 
 
@@ -92,8 +94,17 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  if (a < c && b < c && a + b > c) {
+    return true;
+  } if (a < b && c < b && a + c > b) {
+    return true;
+  } if (c < a && b < a && c + b > a) {
+    return true;
+  } if (c === a && a === b && a + b > c) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -160,11 +171,17 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const circleX = circle.center.x;
+  const circleY = circle.center.y;
+  const { radius } = circle;
+  const pointX = point.x;
+  const poinY = point.y;
+  if (((circleX - pointX) ** 2 + (circleY - poinY) ** 2) < radius ** 2) {
+    return true;
+  }
+  return false;
 }
-
-
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
  *
