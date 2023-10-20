@@ -248,8 +248,7 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  const newArr = arr.map((index, array) => array[index - 1] + array[index]);
-  return newArr.splice(1, newArr.length - 1);
+  return arr;
 }
 
 /**
@@ -283,8 +282,8 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  return arr;
 }
 
 
@@ -301,8 +300,12 @@ function propagateItemsByPositionIndex(/* arr */) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function get3TopItems(arr) {
+  const newArr = arr.sort((a, b) => b - a);
+  if (arr.length < 3) {
+    return newArr.splice(0);
+  }
+  return arr.splice(0, 3);
 }
 
 
@@ -320,7 +323,7 @@ function get3TopItems(/* arr */) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  const newArr = arr.filter((element) => Number(element) > 0);
+  const newArr = arr.filter((element) => element > 0 && typeof element === 'number');
   return newArr.length;
 }
 
@@ -590,7 +593,16 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(arr) {
-  return arr;
+  if (arr.length % 2 === 0) {
+    const middle = arr.length / 2;
+    const arr1 = arr.splice(middle, arr.length - 1);
+    const arr2 = arr.splice(0, middle);
+    return arr1.concat(arr2);
+  }
+  const middle = Math.floor(arr.length / 2);
+  const arr1 = arr.splice(middle + 1, arr.length - 1);
+  const arr2 = arr.splice(0, middle);
+  return arr1.concat(arr).concat(arr2);
 }
 
 
