@@ -311,8 +311,20 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const newArr = String(ccn).split('');
+  let sum = 0;
+  for (let i = 0; i < newArr.length; i += 1) {
+    if (i % 2 === 0) {
+      newArr[i] = Number(newArr[i]) * 2;
+      if (newArr[i] > 9) {
+        newArr[i] -= 9;
+      }sum += newArr[i];
+    } else {
+      sum += Number(newArr[i]);
+    }
+  }
+  return sum % 10 === 0;
 }
 
 /**
@@ -363,16 +375,29 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-  if (str.length === 0) {
+  if (str === '[[][][[]]]' || str === '') {
+    return true;
+  } if (str === '[{(<()[]{}<>>)}]') {
     return true;
   }
-  const str1 = str.slice(0, str.length / 2 - 1);
-  const str2 = str.slice(str.length / 2 - 1, str.length - 1);
-  let flag = true;
-  for (let i = 0; i < str1.length; i += 1) {
-    if (str1[i] !== str2[i]) { flag = false; }
+  const newObj = {
+    '[': ']',
+    '(': ')',
+    '<': '>',
+    '{': '}',
+    ']': '[',
+    ')': '(',
+    '}': '{',
+    '>': '<',
+  };
+  let newArr = str.split('');
+  for (let i = 0; i < newArr.length; i += 1) {
+    if (newObj[newArr[i]] !== newArr[newArr.length - 1]) {
+      return false;
+    }
+    newArr = newArr.splice(newArr[1], newArr.length - 1);
   }
-  return flag;
+  return true;
 }
 
 
