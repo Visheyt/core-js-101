@@ -212,8 +212,15 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-
+function toCsvText(arr) {
+  let str = '';
+  arr.map((element) => {
+    str += element.join(',');
+    str += '\n';
+    return element;
+  });
+  str = str.slice(0, str.length - 1);
+  return str;
 }
 
 /**
@@ -248,7 +255,15 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  return arr;
+  const array = arr;
+  const newArr = array.map((element, index) => {
+    if (index > 0) {
+      array[index] += array[index - 1];
+      return array[index];
+    }
+    return element;
+  });
+  return newArr;
 }
 
 /**
@@ -283,7 +298,11 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  return arr;
+  const newArr = arr.map((element, index) => {
+    const arrMiddle = Array(index + 1);
+    return arrMiddle.fill(element);
+  });
+  return newArr.flat();
 }
 
 
@@ -552,7 +571,7 @@ function group(/* array, keySelector, valueSelector */) {
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  const newArr = arr.map((element) => childrenSelector(element));
+  const newArr = arr.flatMap((element) => childrenSelector(element));
   return newArr;
 }
 

@@ -314,8 +314,9 @@ function reverseInteger(num) {
 function isCreditCardNumber(ccn) {
   const newArr = String(ccn).split('');
   let sum = 0;
+  const middle = newArr.length % 2;
   for (let i = 0; i < newArr.length; i += 1) {
-    if (i % 2 === 0) {
+    if (i % 2 === middle) {
       newArr[i] = Number(newArr[i]) * 2;
       if (newArr[i] > 9) {
         newArr[i] -= 9;
@@ -438,8 +439,8 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  return pathes;
 }
 
 
